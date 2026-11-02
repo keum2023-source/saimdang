@@ -270,6 +270,18 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
 .why b { color: var(--text); }
 .vc-box p.why-title { margin-top: 18px; font-weight: 800; font-size: 17px; color: var(--text); }
 .vc-box .tip { margin-top: 16px; }
+/* 바우처 신청 절차 */
+.flow { margin-top: 22px; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 26px 28px; }
+.flow h3 { font-size: 20px; margin-bottom: 16px; }
+.flow-steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; counter-reset: none; }
+.flow-steps li { position: relative; background: var(--rose-bg); border-radius: 16px; padding: 16px 16px 18px; }
+.flow-steps li + li::before { content: "›"; position: absolute; left: -11px; top: 22px; font-size: 20px; font-weight: 800; color: var(--pink); }
+.flow-no { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--rose); color: #fff; font-size: 14px; font-weight: 800; }
+.flow-who { margin-top: 10px; font-size: 13px; font-weight: 700; color: var(--rose); }
+.flow-steps b { display: block; font-size: 17px; margin-top: 2px; }
+.flow-steps li > p:last-child { margin-top: 6px; font-size: 15px; line-height: 1.6; color: var(--text-2); }
+.flow-steps li > p:last-child b { display: inline; font-size: inherit; color: var(--text); }
+.flow-note { margin-top: 14px; font-size: 14px; color: var(--text-2); }
 /* 신청 전 확인 (기간 변경 불가 등) */
 .before-apply { margin-top: 22px; border: 2px solid var(--rose); border-radius: 22px; padding: 22px 26px; background: #fff; }
 .before-apply h3 { font-size: 18px; color: var(--rose); margin-bottom: 8px; }
@@ -398,6 +410,12 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
   .svc { gap: 14px; }
   .svc-cta { flex-direction: column; align-items: stretch; }
   .vc-detail { grid-template-columns: 1fr; }
+  .flow-steps { grid-template-columns: 1fr; gap: 14px; }
+  .flow-steps li { display: grid; grid-template-columns: 28px 1fr; column-gap: 12px; padding: 14px 16px; }
+  .flow-steps li > * { grid-column: 2; }
+  .flow-steps .flow-no { grid-column: 1; grid-row: 1 / span 3; }
+  .flow-who { margin-top: 2px; }
+  .flow-steps li + li::before { content: "↓"; left: 22px; top: -17px; font-size: 14px; }
   .start { grid-template-columns: 1fr; }
   .start li, .match li { display: grid; grid-template-columns: 44px 1fr; column-gap: 16px; }
   .start li > span, .match li > span { grid-row: span 2; }
@@ -445,6 +463,7 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
   .vc-q { font-size: 14px; padding: 1px 10px; }
   .vc-a { font-size: 15px; margin-top: 8px; }
   .two-track { grid-template-columns: 1fr; gap: 10px; }
+  .flow { padding: 20px 16px; }
   .track { padding: 14px 16px; }
   .vc-box { padding: 22px 18px; }
   /* 휴대폰: 표를 줄마다 카드처럼 (구분 위에, 단축·표준·연장 나란히) */
@@ -721,7 +740,7 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
           매년 확인할 곳: 아래 숫자(신청 기간·서비스 기간·사용 기한)와 맨 아래 "기준" 줄.
           2026-11-02 확인: 수원시청 '산모·신생아 건강관리 지원'(신청 기간, 신청처, 서비스 기간),
           동대문구·세종시 보건소 2026 안내(단축·표준·연장 일수, 출산일로부터 90일 사용, 본인부담금 계산),
-          김포시 안내(바우처 생성 후 기간 변경 불가).
+          경기도 광주시 보건소 2026 안내(2026-10-27 수정: 바우처 신청 절차, 국민행복카드 결제, 바우처 생성 후 기간 변경 불가).
         -->
         <p class="eyebrow">정부 지원 안내</p>
         <h2>산모·신생아 건강관리 지원,<br>이렇게 신청하세요.</h2>
@@ -730,13 +749,26 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
         <!-- 정부 지원 신청과 업체 예약은 다른 절차 -->
         <div class="two-track">
           <div class="track">
-            <span class="track-no">정부</span>
-            <div><b>정부 지원 신청</b><p>산모님이 <b>보건소·복지로</b>에 직접 신청해요. 서비스 기간을 이때 골라요.</p></div>
+            <span class="track-no">먼저</span>
+            <div><b>업체 선정·예약</b><p>사임당 홈케어에 <b>네이버 예약</b>으로 상담을 신청하고 예약해요. 관리사님은 시작 2주 전쯤 배정해요.</p></div>
           </div>
           <div class="track">
-            <span class="track-no">사임당</span>
-            <div><b>관리사님 예약</b><p>사임당 홈케어에 <b>네이버 예약</b>으로 상담을 신청해요. 일정을 정하고, 관리사님은 시작 2주 전쯤 배정해요.</p></div>
+            <span class="track-no">다음</span>
+            <div><b>정부 지원 신청</b><p>산모님이 <b>보건소·복지로</b>에 직접 신청해요. 서비스 기간을 이때 골라요.</p></div>
           </div>
+        </div>
+
+        <!-- 바우처 신청 절차: 경기도 광주시·동대문구 보건소 2026 안내 기준 -->
+        <div class="flow">
+          <h3>바우처 신청부터 이용까지</h3>
+          <ol class="flow-steps">
+            <li><span class="flow-no">1</span><p class="flow-who">산모님 · 사임당</p><b>업체 선정·예약</b><p>먼저 사임당 홈케어에 상담을 신청하고 예약해요. 이용할 업체가 정해져 있어야 신청이 편해요.</p></li>
+            <li><span class="flow-no">2</span><p class="flow-who">산모님</p><b>정부 지원 신청</b><p>보건소 방문 또는 복지로(온라인). 신분증과 함께, 출산 전엔 예정일이 적힌 임신확인서·산모수첩, 출산 후엔 출생증명서를 준비해요.</p></li>
+            <li><span class="flow-no">3</span><p class="flow-who">보건소</p><b>지원 결정 안내</b><p>서류를 확인한 뒤 서비스 유형이 정해져 안내돼요. 며칠 걸릴 수 있어요.</p></li>
+            <li><span class="flow-no">4</span><p class="flow-who">산모님 · 사임당</p><b>계약·바우처 생성</b><p>계약하고 본인부담금을 내면, 업체가 전자바우처에 등록한 다음 날 바우처가 만들어져요.</p></li>
+            <li><span class="flow-no">5</span><p class="flow-who">산모님</p><b>이용·결제</b><p>관리사님이 오시는 날마다 <b>국민행복카드</b>로 결제해요. 카드를 꼭 챙겨 두세요.</p></li>
+          </ol>
+          <p class="flow-note">보건소 2026년 안내 기준이에요. 준비 서류와 걸리는 날짜는 지역마다 조금 다를 수 있어요.</p>
         </div>
 
         <div class="vc">
