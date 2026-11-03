@@ -100,6 +100,7 @@ p, li, summary, dd { text-wrap: pretty; }
 .top-in { display: flex; align-items: center; gap: 24px; min-height: 76px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: 800; font-size: 23px; letter-spacing: -0.03em; }
 /* '수원지사'를 브랜드명과 같은 크기로, 세로 줄로 나눠 함께 보이게 */
+.brand > span { display: flex; align-items: center; line-height: 1.2; }
 .brand small { display: inline-flex; align-items: center; gap: 10px; margin-left: 8px; font-size: inherit; font-weight: 800; color: var(--rose); }
 .brand small::before { content: ""; width: 2px; height: 0.9em; border-radius: 2px; background: #EBC3C7; }
 .nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
