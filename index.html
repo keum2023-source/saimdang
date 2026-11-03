@@ -159,6 +159,30 @@ h1 { font-size: clamp(32px, 4vw, 50px); font-weight: 800; }
 }
 
 /* 빠른 안내: 첫 화면 아래 가로 한 줄 */
+/* 예약 현황 */
+.booking { grid-column: 1 / -1; background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 24px 28px; box-shadow: var(--shadow); }
+.booking-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.booking-title { display: flex; align-items: center; gap: 10px; font-size: 21px; font-weight: 800; color: var(--text); }
+.booking-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 0 rgba(241, 87, 95, .6); animation: booking-pulse 1.8s infinite; }
+@keyframes booking-pulse { 0% { box-shadow: 0 0 0 0 rgba(241, 87, 95, .55); } 70% { box-shadow: 0 0 0 10px rgba(241, 87, 95, 0); } 100% { box-shadow: 0 0 0 0 rgba(241, 87, 95, 0); } }
+.booking-date { font-size: 14px; color: var(--text-2); }
+.booking-months { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.booking-months li { background: var(--rose-bg); border-radius: 16px; padding: 14px 16px; display: grid; gap: 8px; }
+.booking-months b { font-size: 18px; font-weight: 800; }
+.booking-bar { display: block; height: 8px; border-radius: 999px; background: #F3DADC; overflow: hidden; }
+.booking-bar i { display: block; height: 100%; border-radius: inherit; }
+.booking-months em { font-style: normal; font-size: 15px; font-weight: 800; }
+.booking-months .full i { width: 95%; background: var(--rose); }
+.booking-months .full em { color: var(--rose); }
+.booking-months .hot i { width: 70%; background: var(--pink); }
+.booking-months .hot em { color: #D9485A; }
+.booking-months .open i { width: 30%; background: #F2A9AE; }
+.booking-months .open em { color: var(--text-2); }
+.booking-foot { margin-top: 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.booking-foot p { font-size: 16px; color: var(--text-2); }
+.booking-foot p b { color: var(--text); }
+.booking-foot .btn { flex: none; min-height: 48px; font-size: 16px; }
+@media (prefers-reduced-motion: reduce) { .booking-dot { animation: none; } }
 .quick { grid-column: 1 / -1; background: #fff; border: 2px solid var(--rose); border-radius: 24px; padding: 26px 32px; box-shadow: var(--shadow); }
 .quick-title { font-weight: 800; font-size: 22px; color: var(--rose); margin-bottom: 10px; }
 .quick dl { margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr); gap: 0 28px; }
@@ -450,6 +474,15 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
   .cta-row .btn { width: 100%; }
   .quick { padding: 24px 20px; }
   .quick dl { grid-template-columns: 1fr; }
+  .booking { padding: 18px 16px; border-radius: 20px; }
+  .booking-title { font-size: 18px; }
+  .booking-months { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .booking-months li { padding: 12px 12px; }
+  .booking-months b { font-size: 16px; }
+  .booking-months em { font-size: 13px; }
+  .booking-foot { flex-direction: column; align-items: stretch; }
+  .booking-foot p { font-size: 14px; }
+  .booking-foot .btn { width: 100%; }
   .quick dl div { grid-template-columns: 84px 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid #F6E6E6; }
   .brand img { width: 36px; height: 36px; }
   .letter { padding: 26px 22px; font-size: 16px; }
@@ -687,6 +720,24 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
             ["3주 후 3주를 연장할 정도로 너무 만족스러웠어요.", "맘카페 산모님 후기 중"]
           ]'><span class="hb-text">“관리사님 계시는 동안 홈캠 1번도 안 봤어요.”</span><cite>맘카페 산모님 후기 중</cite></blockquote>
         </div>
+
+        <!-- 예약 현황: 매달 바꿔 주세요. 상태는 full(거의 마감) / hot(빠르게 마감 중) / open(예약 가능) 중 하나 -->
+        <section class="booking" aria-label="사임당 예약 현황">
+          <div class="booking-head">
+            <p class="booking-title"><span class="booking-dot" aria-hidden="true"></span>사임당 예약 현황</p>
+            <p class="booking-date">2026년 11월 기준</p>
+          </div>
+          <ol class="booking-months">
+            <li class="full"><b>12월</b><span class="booking-bar" aria-hidden="true"><i></i></span><em>거의 마감</em></li>
+            <li class="hot"><b>1월</b><span class="booking-bar" aria-hidden="true"><i></i></span><em>빠르게 마감 중</em></li>
+            <li class="hot"><b>2월</b><span class="booking-bar" aria-hidden="true"><i></i></span><em>빠르게 마감 중</em></li>
+            <li class="open"><b>3월~</b><span class="booking-bar" aria-hidden="true"><i></i></span><em>예약 가능</em></li>
+          </ol>
+          <div class="booking-foot">
+            <p>2월 출산 예정까지 예약이 빠르게 차고 있어요. <b>출산 예정일이 나왔다면 미리 상담 예약</b>해 두세요.</p>
+            <a class="btn btn-main" href="https://map.naver.com/p/entry/place/1875404625?placePath=%2Fticket" target="_blank" rel="noopener">내 출산월 예약하기 ↗</a>
+          </div>
+        </section>
 
         <aside class="quick" aria-label="빠른 안내">
           <p class="quick-title">빠른 안내</p>
