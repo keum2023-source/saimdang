@@ -109,6 +109,12 @@ p, li, summary, dd { text-wrap: pretty; }
   color: var(--text); text-decoration: none; font-weight: 600; font-size: 17px; line-height: 1.4;
 }
 .nav a:hover { background: var(--rose-bg); }
+.nav a { white-space: nowrap; }
+/* 메뉴가 한 줄에 다 들어가게, 조금 좁은 PC 화면에서는 간격·글씨를 줄임 */
+@media (min-width: 1081px) and (max-width: 1260px) {
+  .nav a { padding: 10px 7px; font-size: 16px; }
+  .nav .nav-cta { margin-left: 4px; padding: 0 18px; }
+}
 .nav .nav-cta { color: #fff; background: var(--rose); margin-left: 8px; padding: 0 24px; min-height: 50px; }
 .nav .nav-cta:hover { background: var(--rose-dark); }
 .menu-btn { display: none; }
@@ -326,6 +332,16 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
 .svc-cta p { font-size: 16px; color: var(--text-2); max-width: 44em; }
 .svc-cta b { display: block; font-size: 18px; color: var(--text); margin-bottom: 2px; }
 .svc-cta .btn { flex: none; }
+.info-entry { margin-top: 22px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 28px; align-items: center; border: 2px solid var(--rose-soft); border-radius: 22px; padding: 28px 30px; background: #fff; }
+.ie-eye { font-size: 15px; font-weight: 800; color: var(--rose); }
+.info-entry h3 { margin-top: 6px; font-size: 22px; }
+.ie-text > p:last-child { margin-top: 8px; font-size: 16px; color: var(--text-2); }
+.ie-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.ie-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 2px solid var(--line); background: #fff; color: var(--text); font-size: 16px; font-weight: 700; text-decoration: none; }
+.ie-links a:hover { border-color: var(--rose); color: var(--rose); }
+.ie-links a.warn { border-color: var(--rose); color: var(--rose); }
+.ie-links a.all { width: 100%; justify-content: center; background: var(--rose); border-color: var(--rose); color: #fff; }
+.ie-links a.all:hover { background: var(--rose-dark); color: #fff; }
 .fine { list-style: none; padding: 20px 24px; margin: 28px 0 0; background: #fff; border: 1px solid var(--line); border-radius: 18px; display: grid; gap: 8px; font-size: 17px; color: var(--text-2); }
 .fine li { padding-left: 18px; position: relative; }
 .fine li::before { content: "·"; position: absolute; left: 4px; font-weight: 900; color: var(--rose); }
@@ -480,6 +496,7 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
 }
 
 @media (max-width: 960px) {
+  .info-entry { grid-template-columns: 1fr; gap: 18px; padding: 24px 20px; }
   .hero { padding: 48px 0 64px; }
   .hero-in { grid-template-columns: 1fr; gap: 36px; }
   .hero-img { max-width: 270px; }
@@ -650,6 +667,9 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
   .scope-box ul { font-size: 15px; }
   .scope-out li::before { font-size: 12px; }
   .svc-cta p { font-size: 15px; }
+  .info-entry h3 { font-size: 19px; }
+  .ie-text > p:last-child { font-size: 14px; }
+  .ie-links a { font-size: 14px; min-height: 40px; padding: 0 13px; }
   .svc-cta b { font-size: 17px; }
   .fine { font-size: 16px; }
   .vc-q { font-size: 13px; }
@@ -728,6 +748,7 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
         <a href="#helper">관리사</a>
         <a href="#steps">이용 절차</a>
         <a href="#faq">자주 묻는 질문</a>
+        <a href="info.html">산후 정보</a>
         <a class="btn btn-main nav-cta" href="https://map.naver.com/p/entry/place/1875404625?placePath=%2Fticket" target="_blank" rel="noopener">상담 예약</a>
       </nav>
       <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">
@@ -969,6 +990,25 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
         <div class="svc-cta">
           <p><b>우리 집은 무엇이 가장 필요할까요?</b> 큰아이가 있거나 꼭 부탁하고 싶은 일이 있다면 상담 때 말씀해 주세요. 가능한 범위와 맞는 관리사님을 안내해 드려요.</p>
           <a class="btn btn-main" href="https://map.naver.com/p/entry/place/1875404625?placePath=%2Fticket" target="_blank" rel="noopener">우리 집 상황으로 상담 예약 ↗</a>
+        </div>
+
+        <!-- 산후 정보 페이지(info.html) 들어가는 곳: 주제를 누르면 그 주제가 바로 열림 -->
+        <div class="info-entry" id="info">
+          <div class="ie-text">
+            <p class="ie-eye">📖 산후·신생아 정보</p>
+            <h3>집에 온 첫 몇 주, 궁금한 것부터 눌러 보세요</h3>
+            <p>정상 체온·수유 횟수부터 바로 병원에 가야 할 때까지, 관리사 교육 교재로 쉽게 정리했어요.</p>
+          </div>
+          <div class="ie-links">
+            <a href="info.html#normal">정상 수치</a>
+            <a href="info.html#feed">수유</a>
+            <a href="info.html#navel">배꼽</a>
+            <a href="info.html#jaundice">황달</a>
+            <a href="info.html#bath">목욕</a>
+            <a href="info.html#sleep">안전한 잠</a>
+            <a class="warn" href="info.html#urgent">⚠️ 바로 병원</a>
+            <a class="all" href="info.html">산후 정보 전체 보기 →</a>
+          </div>
         </div>
       </div>
     </section>
