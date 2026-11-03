@@ -166,6 +166,9 @@ h1 { font-size: clamp(32px, 4vw, 50px); font-weight: 800; }
 .booking-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--pink); box-shadow: 0 0 0 0 rgba(241, 87, 95, .6); animation: booking-pulse 1.8s infinite; }
 @keyframes booking-pulse { 0% { box-shadow: 0 0 0 0 rgba(241, 87, 95, .55); } 70% { box-shadow: 0 0 0 10px rgba(241, 87, 95, 0); } 100% { box-shadow: 0 0 0 0 rgba(241, 87, 95, 0); } }
 .booking-date { font-size: 14px; color: var(--text-2); }
+.booking-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+.booking-pill { background: var(--rose-soft); color: var(--rose-dark); border-radius: 999px; padding: 5px 14px; font-size: 15px; font-weight: 700; }
+.booking-pill b { color: var(--rose); font-weight: 800; }
 .booking-months { list-style: none; padding: 0; margin: 18px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
 .booking-months li { background: var(--rose-bg); border-radius: 16px; padding: 14px 16px; display: grid; gap: 8px; }
 .booking-months b { font-size: 18px; font-weight: 800; }
@@ -476,6 +479,9 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
   .quick dl { grid-template-columns: 1fr; }
   .booking { padding: 18px 16px; border-radius: 20px; }
   .booking-title { font-size: 18px; }
+  .booking-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .booking-meta { justify-content: flex-start; gap: 8px; }
+  .booking-pill { font-size: 13px; padding: 4px 11px; }
   .booking-months { grid-template-columns: 1fr 1fr; gap: 8px; }
   .booking-months li { padding: 12px 12px; }
   .booking-months b { font-size: 16px; }
@@ -691,7 +697,7 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
           <ul class="hero-stats" aria-label="사임당 홈케어 수원지사 한눈에 보기">
             <li><b>200+</b>산모님 후기</li>
             <li><b>15년+</b>대표원장 경력</li>
-            <li><b>직접</b>대표원장 상담</li>
+            <li><b>50건+</b>매달 상담 신청</li>
           </ul>
           <div class="cta-row">
             <a class="btn btn-main btn-lg" href="https://map.naver.com/p/entry/place/1875404625?placePath=%2Fticket" target="_blank" rel="noopener">내 출산일로 상담 예약하기</a>
@@ -725,7 +731,7 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
         <section class="booking" aria-label="사임당 예약 현황">
           <div class="booking-head">
             <p class="booking-title"><span class="booking-dot" aria-hidden="true"></span>사임당 예약 현황</p>
-            <p class="booking-date">2026년 11월 기준</p>
+            <p class="booking-meta"><span class="booking-pill">매달 상담 신청 <b>50건 이상</b></span><span class="booking-date">2026년 11월 기준</span></p>
           </div>
           <ol class="booking-months">
             <li class="full"><b>12월</b><span class="booking-bar" aria-hidden="true"><i></i></span><em>거의 마감</em></li>
