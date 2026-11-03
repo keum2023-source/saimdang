@@ -75,8 +75,10 @@ p { margin: 0; }
 /* 후기 목록 */
 .list { padding: 12px 0 40px; display: grid; gap: 22px; }
 .rv { background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 30px 32px; box-shadow: 0 4px 16px rgba(120, 40, 50, .05); }
-.rv-meta { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--text-2); }
+.rv-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--text-2); }
 .rv-meta .tag { background: var(--rose-soft); color: var(--rose); border-radius: 999px; padding: 2px 10px; }
+.rv-orig { margin-left: auto; flex: none; font-size: 13px; font-weight: 700; color: var(--rose); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; background: #fff; }
+.rv-orig:hover { border-color: var(--rose); }
 .rv h2 { margin-top: 10px; font-size: 21px; line-height: 1.45; }
 .rv-photos { margin-top: 18px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 .rv-photos.one { grid-template-columns: minmax(0, 360px); }
@@ -196,7 +198,7 @@ p { margin: 0; }
         <a class="btn btn-line" href="https://map.naver.com/p/entry/place/1875404625?placePath=%2Freview" target="_blank" rel="noopener">네이버 플레이스 리뷰 보기 ↗</a>
         <a class="btn btn-line" href="https://blog.naver.com/saimdang_suwoncare" target="_blank" rel="noopener">네이버 블로그 후기 ↗</a>
       </div>
-      <p class="note">산모님과 아기 이름은 가렸어요. 원문은 사임당 본사 홈페이지 '칭찬의 글'에 있어요.</p>
+      <p class="note">'원문 보기'를 누르면 산모님이 맘스홀릭이나 블로그에 직접 쓰신 글을 확인할 수 있어요. 홈페이지에서는 산모님과 아기 이름을 가렸어요.</p>
     </div>
 
     <section class="cta">
@@ -255,6 +257,14 @@ function card(r) {
   art.id = "r" + r.i;
   const meta = el("p", "rv-meta");
   meta.append(el("span", "tag", r.s), el("span", null, r.d));
+  // 산모님이 직접 쓰신 원문(맘스홀릭·블로그)이 있는 후기만 '원문 보기' 버튼을 붙임
+  if (r.u) {
+    const orig = el("a", "rv-orig", (/blog\./.test(r.u) ? "산모님 블로그 원문 보기" : "맘스홀릭 원문 보기") + " ↗");
+    orig.href = r.u;
+    orig.target = "_blank";
+    orig.rel = "noopener";
+    meta.append(orig);
+  }
   art.append(meta, el("h2", null, r.t));
 
   if (r.p.length) {
