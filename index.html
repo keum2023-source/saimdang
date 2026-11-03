@@ -99,7 +99,9 @@ p, li, summary, dd { text-wrap: pretty; }
 }
 .top-in { display: flex; align-items: center; gap: 24px; min-height: 76px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: 800; font-size: 23px; letter-spacing: -0.03em; }
-.brand small { font-size: 17px; font-weight: 700; color: var(--rose); margin-left: 2px; }
+/* '수원지사'를 브랜드명과 같은 크기로, 세로 줄로 나눠 함께 보이게 */
+.brand small { display: inline-flex; align-items: center; gap: 10px; margin-left: 8px; font-size: inherit; font-weight: 800; color: var(--rose); }
+.brand small::before { content: ""; width: 2px; height: 0.9em; border-radius: 2px; background: #EBC3C7; }
 .nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .nav a {
   padding: 10px 12px; border-radius: 10px;
@@ -442,7 +444,7 @@ h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; }
   .top-in { min-height: 66px; gap: 12px; }
   .brand { font-size: 20px; }
   .brand img { width: 32px; height: 32px; }
-  .brand small { font-size: 15px; }
+  .brand small { gap: 8px; }
   .sec { padding: 72px 0; }
   .lead { font-size: 17px; }
   .cta-row .btn { width: 100%; }
