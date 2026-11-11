@@ -177,12 +177,13 @@ p { margin: 0; }
       <div class="wrap">
         <p class="eyebrow">산모님 후기</p>
         <h1>먼저 이용한 산모님들의<br><span class="hl">진짜 이야기</span>를 들어 보세요.</h1>
-        <p class="sub">맘카페와 손편지로 남겨 주신 <b>200+</b> 후기를 모았어요. 최신 후기부터 보여 드려요.</p>
+        <p class="sub">맘카페·네이버 리뷰·손편지로 남겨 주신 <b>200+</b> 후기를 모았어요. 최신 후기부터 보여 드려요.</p>
         <div class="tools">
           <input type="search" id="search" placeholder="관리사님 이름이나 궁금한 말로 찾기 (예: 유미희, 쌍둥이)" aria-label="후기 찾기">
           <div class="chips" role="group" aria-label="후기 종류">
             <button class="chip" type="button" data-f="all" aria-pressed="true">전체</button>
             <button class="chip" type="button" data-f="맘카페 후기" aria-pressed="false">맘카페 후기</button>
+            <button class="chip" type="button" data-f="네이버 리뷰" aria-pressed="false">네이버 리뷰</button>
             <button class="chip" type="button" data-f="손편지" aria-pressed="false">손편지</button>
             <button class="chip" type="button" data-f="photo" aria-pressed="false">포토 후기</button>
           </div>
@@ -225,7 +226,7 @@ p { margin: 0; }
   </dialog>
 
   <!-- 후기 데이터: 이 파일과 같은 자리(맨 위)의 reviews.js. 데이터를 바꿀 때마다 ?v= 뒤 날짜를 바꿔야 방문자 인터넷 창에 새 후기가 바로 보임 -->
-  <script src="reviews.js?v=20261111"></script>
+  <script src="reviews.js?v=20261111b"></script>
   <script>
 // 산모님 후기 모아 보기: 찾기, 종류 고르기, 더 보기, 글 펼치기, 사진 크게 보기
 const all = window.REVIEWS || [];
