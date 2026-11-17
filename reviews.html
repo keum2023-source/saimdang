@@ -118,6 +118,7 @@
   <!-- 후기 데이터: 이 파일과 같은 자리(맨 위)의 reviews.js. 데이터를 바꿀 때마다 ?v= 뒤 날짜를 바꿔야 방문자 인터넷 창에 새 후기가 바로 보임 -->
   <script src="reviews.js?v=20261117"></script>
   <script>
+function setPhoto(el, f) { el.onerror = () => { el.onerror = null; el.src = "reviews/" + f; }; el.src = "reviews/img/" + f; }
 // 휴대폰 메뉴
 const menuBtn = document.querySelector(".menu-btn"), nav = document.getElementById("nav");
 const setMenu = (open) => { menuBtn.setAttribute("aria-expanded", String(open)); nav.classList.toggle("open", open); };
@@ -173,7 +174,7 @@ function card(r) {
       b.type = "button";
       b.setAttribute("aria-label", "사진 크게 보기 " + (n + 1));
       const img = el("img");
-      img.src = "reviews/img/" + f;
+      setPhoto(img, f);
       img.alt = r.t + " 사진 " + (n + 1);
       img.loading = "lazy";
       b.append(img);
@@ -226,7 +227,7 @@ const lb = document.getElementById("lb");
 const lbImg = document.getElementById("lbImg");
 let lbList = [], lbAt = 0;
 function showLb() {
-  lbImg.src = "reviews/img/" + lbList[lbAt];
+  setPhoto(lbImg, lbList[lbAt]);
   document.getElementById("lbCount").textContent = (lbAt + 1) + " / " + lbList.length;
   document.getElementById("lbPrev").hidden = document.getElementById("lbNext").hidden = lbList.length < 2;
 }

@@ -613,6 +613,14 @@ heroBox.addEventListener("mouseleave", () => { heroHold = false; });
 if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
   setInterval(() => { if (!heroHold && !document.hidden && scrollY < innerHeight) heroShow(heroAt + 1); }, 6000);
 }
+
+// 휴대폰: 내려갈 때 제목·사진·카드가 아래에서 살짝 떠오르며 나타남 (한 번만). 컴퓨터·동작 줄이기 설정에서는 없음
+if (matchMedia("(max-width: 900px) and (prefers-reduced-motion: no-preference)").matches && "IntersectionObserver" in window) {
+  const sel = ".sec .eyebrow, .sec .sec-title, .sec .sec-lead, .philo-photo, .philo-body > *, .why-head > *, .why-col li, .care-row figure, .care-txt, .care-scope > div, .consult-in > *, .rest-photo, .rest-txt > *, .flow li, .facts, .months, .join-in > *, #stories .rv-layout > *";
+  const els = [...document.querySelectorAll(sel)].filter((el) => el.getBoundingClientRect().top > innerHeight);
+  const upIO = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); upIO.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+  els.forEach((el) => { el.classList.add("m-up"); upIO.observe(el); });
+}
   </script>
 </body>
 </html>

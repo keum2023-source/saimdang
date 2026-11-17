@@ -490,3 +490,19 @@ body.dock-on { padding-bottom: 150px; } @media (max-width: 900px) { body.dock-on
   .gov-bar { min-height: 40px; font-size: 13px; gap: 0; }
   .gov-a, .gov-sep { display: none; }
 }
+
+/* 2026-11-17 휴대폰: 첫 화면 아래·후기 칸 위 여백 줄임 */
+@media (max-width: 900px) {
+  .hero-copy { padding-bottom: 36px; }
+  body #stories { padding-top: 56px; }
+}
+@media (max-width: 640px) {
+  .hero-copy { padding-bottom: 28px; }
+  body #stories { padding-top: 40px; }
+}
+
+/* 휴대폰 전용: 내려갈 때 글·사진이 아래에서 살짝 떠오르며 나타남 (한 번만, 동작 줄이기 설정이면 없음) */
+.m-up { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.m-up.in { opacity: 1; transform: none; }
+.why-col li.m-up:not(.in) { opacity: 0; }
+.why-col li.m-up { transition: opacity .7s ease, transform .7s ease, background .5s; }
