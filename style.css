@@ -124,7 +124,7 @@ figure { margin: 0; }
 
 /* 3. 전문성: 어두운 사진 배경 위, 왼쪽 제목은 고정되고 오른쪽 카드 두 줄이 엇갈려 올라감.
    화면 가운데 카드만 밝아짐 (분당제일 OUR MISSION 배치 참고). 이 구간에만 움직임 */
-.why-sec { position: relative; color: var(--on-dark); background: var(--dark) url("reviews/img/site-gallery-1.jpg") center 30% / cover no-repeat; }
+.why-sec { position: relative; color: var(--on-dark); background: var(--dark) url("site-gallery-1.jpg") center 30% / cover no-repeat; }
 .why-sec::after { content: ""; position: absolute; inset: 0; background: rgba(26, 25, 25, .8); }
 .why-in { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.4fr); gap: 64px; padding: 150px 0 170px; }
 .why-head { position: sticky; top: 140px; align-self: start; }
@@ -480,3 +480,13 @@ body.dock-on { padding-bottom: 150px; } @media (max-width: 900px) { body.dock-on
 
 .care-list small { margin-left: 8px; font-size: 14px; color: var(--text-2); }
 .care-tip { margin-top: 16px; font-size: 14px; line-height: 1.7; color: var(--text-2); }
+
+/* 머리 위 정부 지원 안내 띠 (정부 상징·로고는 쓰지 않음) */
+.gov-bar { margin: 0; display: flex; align-items: center; justify-content: center; gap: 20px; min-height: 48px; padding: 8px 20px; background: var(--neutral); color: var(--text-2); font-size: 16px; text-align: center; letter-spacing: -0.01em; }
+.gov-bar b { color: var(--accent-text); font-weight: 700; }
+.gov-sep { width: 1px; height: 14px; background: var(--line); }
+.gov-b { color: var(--text); }
+@media (max-width: 640px) {
+  .gov-bar { min-height: 40px; font-size: 13px; gap: 0; }
+  .gov-a, .gov-sep { display: none; }
+}
