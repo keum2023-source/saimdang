@@ -521,3 +521,8 @@ body.dock-on { padding-bottom: 150px; } @media (max-width: 900px) { body.dock-on
   .why-col li { padding: 22px 10px 20px; }
   .why-col p { font-size: 12.5px; }
 }
+
+/* 로고 글자: '사임당 홈케어 | 수원지사' 한 줄 가운데 맞춤 */
+.brand > span { display: inline-flex; align-items: center; gap: 10px; line-height: 1; }
+.brand small { line-height: 1; }
+.brand small::before { height: 1em; }
