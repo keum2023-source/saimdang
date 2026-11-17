@@ -504,5 +504,20 @@ body.dock-on { padding-bottom: 150px; } @media (max-width: 900px) { body.dock-on
 /* 휴대폰 전용: 내려갈 때 글·사진이 아래에서 살짝 떠오르며 나타남 (한 번만, 동작 줄이기 설정이면 없음) */
 .m-up { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
 .m-up.in { opacity: 1; transform: none; }
-.why-col li.m-up:not(.in) { opacity: 0; }
-.why-col li.m-up { transition: opacity .7s ease, transform .7s ease, background .5s; }
+
+/* 2026-11-17 휴대폰도 컴퓨터처럼: 카드 두 줄을 엇갈리게, 크기만 줄임 */
+@media (max-width: 900px) {
+  .why-in { gap: 40px; }
+  .why-cols { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .why-col { gap: 12px; }
+  .why-col-b { padding-top: 96px; }
+  .why-col li { padding: 26px 12px 24px; border-radius: 8px; }
+  .why-ic { width: 68px; height: 68px; }
+  .why-ic svg { width: 32px; height: 32px; }
+  .why-col h3 { margin-top: 14px; font-size: 15px; line-height: 1.4; word-break: keep-all; }
+  .why-col p { margin-top: 8px; font-size: 13px; line-height: 1.6; word-break: keep-all; }
+}
+@media (max-width: 380px) {
+  .why-col li { padding: 22px 10px 20px; }
+  .why-col p { font-size: 12.5px; }
+}
