@@ -477,3 +477,6 @@ body.dock-on { padding-bottom: 150px; } @media (max-width: 900px) { body.dock-on
 .laurel { width: 17px; height: 31px; }
 @media (max-width: 640px) { .hero-laurel span { font-size: 16px; } .laurel { width: 14px; height: 26px; } }
 .hero-laurel { align-self: flex-start; }
+
+.care-list small { margin-left: 8px; font-size: 14px; color: var(--text-2); }
+.care-tip { margin-top: 16px; font-size: 14px; line-height: 1.7; color: var(--text-2); }
